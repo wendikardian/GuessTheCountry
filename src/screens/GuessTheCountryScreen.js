@@ -18,7 +18,12 @@ const GuessTheCountryScreen = () => {
         }else{
             setResult('false')
         }
-        randomIndex()
+
+        setTimeout(() => {
+            setResult('')
+            setAnswer('')
+            randomIndex()
+        }, 1500)
     }
     useEffect(() => {
         randomIndex()
@@ -33,15 +38,15 @@ const GuessTheCountryScreen = () => {
                 <Text style={{fontSize: 18}} >{objectNameList[index]}</Text>
             </View>
             <View style={{flexDirection: 'row', margin: 8}}>
-                <TextInput style={{borderWidth:1, width: '50%'}} placeholder="Write Your Answer" keyboardType='default' onChangeText = {(text) => setAnswer(text)} />
+                <TextInput style={{borderWidth:1, width: '50%'}} placeholder="Write Your Answer" keyboardType='default' onChangeText = {(text) => setAnswer(text)} value={answer} />
                 <TouchableOpacity style={{
                     borderWidth: 1, alignItems: 'center', justifyContent: 'center', borderRadius: 10, padding: 8, marginLeft: 8, marginBottom: 8, marginTop: 8, borderColor: 'skyblue'
                 }} onPress={() => checkAnswer()}>
                     <Text style={{fontSize: 18}}>Submit</Text>
                 </TouchableOpacity>
             </View>
-            <Text>{countryList[index]}</Text>
-            <Text>{result}</Text>
+            {/* <Text>{countryList[index]}</Text> */}
+            <Text style={{fontSize: 30, fontWeight: 'bold'}}>{result}</Text>
         </View>
     )
 }
